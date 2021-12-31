@@ -17,8 +17,7 @@ const Footer = () => {
                     className="form-horizontal"
                     name="contact" 
                     method="POST" 
-                    data-netlify="true"
-                    data-netlify-honeypot="bot-field"
+                    data-netlify="true"                    
                 >
                     <div className="form-group">
                     <label className="control-label col-sm-2" for="email">Email:</label>
