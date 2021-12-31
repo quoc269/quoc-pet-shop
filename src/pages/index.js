@@ -1,31 +1,54 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/using-ssr">Go to "Using SSR"</Link> <br />
-      <Link to="/using-dsg">Go to "Using DSG"</Link>
-    </p>
-  </Layout>
-)
+import SEO from "../components/seo"
+import 'bootstrap/dist/css/bootstrap.css';
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+const IndexPage = () =>{ 
+  const data = useStaticQuery(
+    graphql`
+    {
+        allContentfulHomePetShop(sort: {fields: publishDate, order: ASC}) {
+          edges {
+            node {       
+              id
+              slug
+              publishDate(formatString: "")
+              title
+              dogDescription {
+                raw
+              }
+              dogImages {
+                gatsbyImageData (width: 400, height: 400)
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+  return (
+    <Layout>
+      <div className="row">
+      {data.allContentfulHomePetShop.edges.map(edge => {
+          return (
+            <div className="col">
+              <h3> 
+                  <Link to={`/index/${edge.node.slug}/`}>{edge.node.title}</Link>
+              </h3>
+                <div className="meta">
+                  <span>Posted on {edge.node.publishDate}</span>
+                </div>               
+                <GatsbyImage image={getImage(edge.node.dogImages.gatsbyImageData)} alt={getImage(edge.node.dogImages.gatsbyImageData)} />                         
+                <div className="button">
+                <Link to={`/index/${edge.node.slug}/`}>Read More</Link>
+                </div>
+            </div>
+          )
+      })}
+      </div> 
+    </Layout>
+  )
+}
 
 export default IndexPage
