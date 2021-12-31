@@ -13,7 +13,13 @@ const Footer = () => {
             >
                 <div style={{ color: `white`,}} className="col">
                 <h3> CONTACT FORM</h3>
-                <form className="form-horizontal" action="/action_page.php">
+                <form 
+                    className="form-horizontal"
+                    name="contact" 
+                    method="POST" 
+                    data-netlify="true"
+                    data-netlify-honeypot="bot-field"
+                >
                     <div className="form-group">
                     <label className="control-label col-sm-2" for="email">Email:</label>
                     <div className="col-sm-10">
