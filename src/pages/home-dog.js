@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Container } from "react-bootstrap"
+import { Container, Carousel } from "react-bootstrap"
 import { StaticImage } from "gatsby-plugin-image"
 const HomeDog = () => {
   const data = useStaticQuery(
@@ -29,14 +29,46 @@ const HomeDog = () => {
   )
   return (
     <div>
-      <Container fluid>
-        <StaticImage
-          src="../images/dog-landing-hero-lg.jpg"
-          formats={["auto", "webp", "avif"]}
-          alt="dog-landing-hero-lg.jpg"
-          style={{ marginBottom: `1.45rem` }}
-        />
-      </Container>
+      <div>
+        <Carousel>
+          <Carousel.Item interval={5000}>
+            <StaticImage
+              src="../images/D_banner_01.jpg"
+              formats={["auto", "webp", "avif"]}
+              alt="dog-landing-hero-lg.jpg"
+              style={{ marginBottom: `1.45rem` }}
+            />
+            <Carousel.Caption>
+              {/* <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={5000}>
+            <StaticImage
+              src="../images/D_banner_02.jpg"
+              formats={["auto", "webp", "avif"]}
+              alt="dog-landing-hero-lg.jpg"
+              style={{ marginBottom: `1.45rem` }}
+            />
+            <Carousel.Caption >
+              {/* <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+            </Carousel.Caption>
+          </Carousel.Item >
+          <Carousel.Item interval={10}>
+            <StaticImage
+              src="../images/D_baner_01.jpg"
+              formats={["auto", "webp", "avif"]}
+              alt="dog-landing-hero-lg.jpg"
+              style={{ marginBottom: `1.45rem` }}
+            />
+            <Carousel.Caption>
+             {/*  <h3>Third slide label</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
       <div className="bg-warning py-3"  >
         <h1 style={{ color: "white" }} >ABOUT US</h1>
         <div>
