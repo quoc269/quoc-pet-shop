@@ -1,3 +1,17 @@
+.nav-links:hover {
+  background-color:orange; /*will change background-color of element on hover */
+  color: rgb(89, 255, 47); /*will change color of text within the element on hover */
+}
+
+.header{
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+}
+
+.header-space{
+  margin-top: 200px; 
+}
+
 /* html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
