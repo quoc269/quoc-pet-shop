@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className='header container-fluid'>
+      <div className='header'>
         <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       </div>
       <div className="container-fluid header-space"></div>
